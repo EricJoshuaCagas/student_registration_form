@@ -1,5 +1,4 @@
 <?php
-// Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $first_name = $_POST['first_name'] ?? '';
@@ -12,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_address = $_POST['email_address'] ?? '';
     $phone_number = $_POST['phone_number'] ?? '';
 
-    $date_of_birth = "$dob_year-$dob_month-$dob_day"; // Format as YYYY-MM-DD
+    $date_of_birth = "$dob_year-$dob_month-$dob_day"; 
 
     $servername = "localhost";
     $username = "root"; 
