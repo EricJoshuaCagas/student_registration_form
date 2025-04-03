@@ -1,8 +1,7 @@
-<!-- filepath: c:\xampp\htdocs\StudentReg\studentreg.php -->
 <?php
 // Check if the form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve form data
+
     $first_name = $_POST['first_name'] ?? '';
     $middle_initial = $_POST['middle_initial'] ?? '';
     $last_name = $_POST['last_name'] ?? '';
@@ -13,24 +12,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_address = $_POST['email_address'] ?? '';
     $phone_number = $_POST['phone_number'] ?? '';
 
-    // Combine date of birth
     $date_of_birth = "$dob_year-$dob_month-$dob_day"; // Format as YYYY-MM-DD
 
-    // Database connection
     $servername = "localhost";
-    $username = "root"; // Default XAMPP username
-    $password = ""; // Default XAMPP password
+    $username = "root"; 
+    $password = ""; 
     $dbname = "SRS";
 
-    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
 
-    // Insert data into the database
     $sql = "INSERT INTO basic_information (first_name, middle_initial, last_name, date_of_birth, gender, email_address, phone_number)
             VALUES ('$first_name', '$middle_initial', '$last_name', '$date_of_birth', '$gender', '$email_address', '$phone_number')";
 
@@ -41,7 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    // Close the connection
     $conn->close();
 }
 ?>
